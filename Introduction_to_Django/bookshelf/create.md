@@ -1,1 +1,1 @@
- ["Book.objects.create", "title", "author", "George Orwell"]
+"Book.objects.create", "title", "author", "George Orwell"
