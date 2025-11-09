@@ -1,3 +1,4 @@
+ ["from django.views.generic.detail import DetailView"]
 ["relationship_app/library_detail.html", "library", "from .models import Library"]
 
 ["relationship_app/list_books.html", "Book.objects.all()"]
@@ -37,6 +38,7 @@ def logout_view(request):
         logout(request)
         return redirect('login')
     return render(request, 'relationship_app/logout.html')
+
 
 
 
