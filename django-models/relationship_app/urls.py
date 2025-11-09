@@ -1,4 +1,15 @@
 from django.urls import path
+from .views import add_book, edit_book, delete_book, list_books
+
+urlpatterns += [
+    path('books/add/', add_book, name='add_book'),
+    path('books/<int:pk>/edit/', edit_book, name='edit_book'),
+    path('books/<int:pk>/delete/', delete_book, name='delete_book'),
+    path('books/', list_books, name='list_books'),  # existing view
+]
+
+
+from django.urls import path
 from .views import admin_view
 
 urlpatterns = [
@@ -35,5 +46,6 @@ urlpatterns += [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
 ]
+
 
 
