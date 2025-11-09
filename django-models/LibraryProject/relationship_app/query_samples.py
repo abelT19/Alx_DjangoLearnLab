@@ -1,3 +1,4 @@
+["Library.objects.get(name=library_name)"]
 # Import Django setup
 import os
 import django
@@ -20,3 +21,4 @@ print(f"Books in {library.name}: {[book.title for book in library_books]}")
 # --- Query 3: Retrieve the librarian for a library ---
 librarian = library.librarian
 print(f"Librarian of {library.name}: {librarian.name}")
+
