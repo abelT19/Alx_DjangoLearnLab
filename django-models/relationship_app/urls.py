@@ -1,3 +1,11 @@
+from django.urls import path
+from .views import admin_view
+
+urlpatterns = [
+    path('admin-view/', admin_view, name='admin_view'),
+]
+
+
 """
 URL configuration for LibraryProject project.
 
@@ -27,4 +35,5 @@ urlpatterns += [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
 ]
+
 
