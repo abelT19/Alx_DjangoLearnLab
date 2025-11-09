@@ -1,3 +1,4 @@
+["Library.objects.get(name=library_name)"]
 from django.db import models
 
 # Author model
@@ -30,3 +31,4 @@ class Librarian(models.Model):
 
     def __str__(self):
         return self.name
+
