@@ -1,4 +1,3 @@
-["class Meta", "permissions"]
 from django.db import models
 
 class Author(models.Model):
@@ -12,6 +11,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     publication_year = models.IntegerField(null=True, blank=True)
 
+    # Nested Meta class
     class Meta:
         permissions = [
             ("can_add_book", "Can add book"),
@@ -21,4 +21,3 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-
