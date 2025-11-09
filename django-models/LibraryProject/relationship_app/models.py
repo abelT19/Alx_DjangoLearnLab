@@ -1,23 +1,32 @@
-import os
-import django
+from django.db import models
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "LibraryProject.settings")
-django.setup()
+# Author model
+class Author(models.Model):
+    name = models.CharField(max_length=100)
 
-from relationship_app.models import Author, Book, Library, Librarian
+    def __str__(self):
+        return self.name
 
-# --- Query 1: All books by a specific author ---
-author_name = "J.K. Rowling"
-author = Author.objects.get(name=author_name)
-books_by_author = author.books.all()
-print(f"Books by {author.name}: {[book.title for book in books_by_author]}")
+# Book model with ForeignKey to Author
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
 
-# --- Query 2: List all books in a library dynamically ---
-library_name = "Central Library"  # Change this variable as needed
-library = Library.objects.get(name=library_name)
-library_books = library.books.all()
-print(f"Books in {library.name}: {[book.title for book in library_books]}")
+    def __str__(self):
+        return self.title
 
-# --- Query 3: Retrieve the librarian for a library dynamically ---
-librarian = library.librarian
-print(f"Librarian of {library.name}: {librarian.name}")
+# Library model with ManyToManyField to Book
+class Library(models.Model):
+    name = models.CharField(max_length=100)
+    books = models.ManyToManyField(Book, related_name='libraries')
+
+    def __str__(self):
+        return self.name
+
+# Librarian model with OneToOneField to Library
+class Librarian(models.Model):
+    name = models.CharField(max_length=100)
+    library = models.OneToOneField(Library, on_delete=models.CASCADE, related_name='librarian')
+
+    def __str__(self):
+        return self.name
