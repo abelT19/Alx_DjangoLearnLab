@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.shortcuts import redirect
-
+"book_list", "raise_exception"
 # Registration view
 def register_view(request):
     if request.method == 'POST':
@@ -33,4 +33,5 @@ def logout_view(request):
         logout(request)
         return redirect('login')
     return render(request, 'relationship_app/logout.html')
+
 
