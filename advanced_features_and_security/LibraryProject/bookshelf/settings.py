@@ -3,6 +3,7 @@
 # Redirect all HTTP requests to HTTPS
 # Redirect all HTTP requests to HTTPS
 SECURE_SSL_REDIRECT = True
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mydomain.com']
 
 SECURE_SSL_REDIRECT = True  # ✅ Ensures all HTTP requests are redirected to HTTPS
 
@@ -47,5 +48,6 @@ SECURE_BROWSER_XSS_FILTER = True  # Enable the browser's XSS filter
 # Note: Ensure DEBUG is False in production
 DEBUG = False
 ALLOWED_HOSTS = ['yourdomain.com']  # Replace with your production domain
+
 
 
