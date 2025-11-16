@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
-
+"class Book(models.Model):", "can_create", "can_delete"
 # Custom User Manager
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
@@ -35,3 +35,4 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
