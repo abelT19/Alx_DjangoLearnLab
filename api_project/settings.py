@@ -1,3 +1,4 @@
+"rest_framework.authtoken"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -12,3 +13,4 @@ INSTALLED_APPS = [
     # Custom app
     'api',
 ]
+
