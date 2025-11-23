@@ -1,3 +1,4 @@
+"rest_framework.authtoken"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -5,9 +6,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',           # already included
-    'rest_framework.authtoken', # ✅ ADD THIS LINE
-    'api',                      # your app
+    'rest_framework',           
+    'rest_framework.authtoken', 
+    'api',                      
 ]
 
 INSTALLED_APPS = [
@@ -25,5 +26,6 @@ REST_FRAMEWORK = {
     ],
 }
 python manage.py migrate
+
 
 
