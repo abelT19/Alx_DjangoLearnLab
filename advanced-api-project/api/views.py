@@ -2,6 +2,7 @@
 ["from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated"]
 ["ListView", "DetailView", "CreateView", "UpdateView", "DeleteView"]
 ["filters.OrderingFilter"]
+["title", "author", "publication_year"]
 ["filters.SearchFilter"]
 from rest_framework import viewsets
 from rest_framework import permissions
@@ -31,6 +32,7 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [permissions.AllowAny]  # Change to IsAuthenticated if needed
+
 
 
 
