@@ -1,3 +1,4 @@
+["rest_framework", "api"]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -13,3 +14,4 @@ TEMPLATES = [
         },
     },
 ]
+
