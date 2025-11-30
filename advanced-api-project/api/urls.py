@@ -1,3 +1,4 @@
+["books", "books/create", "books/update", "books/delete"]
 """
 URL configuration for advanced_api_project project.
 
@@ -20,3 +21,4 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
