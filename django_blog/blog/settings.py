@@ -1,6 +1,7 @@
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        "taggit"
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -13,3 +14,4 @@ TEMPLATES = [
         },
     },
 ]
+
