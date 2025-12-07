@@ -1,4 +1,4 @@
-"""
+login/, register/, profile/
 URL configuration for advanced_api_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -20,3 +20,4 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
