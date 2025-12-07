@@ -1,6 +1,6 @@
 TEMPLATES = [
     {
-        "blog"
+        "blog" "USER", "PASSWORD", "HOST", "PORT"
 
        'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -15,4 +15,5 @@ TEMPLATES = [
         },
     },
 ]
+
 
