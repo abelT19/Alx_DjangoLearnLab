@@ -1,3 +1,4 @@
+"tags/<slug:tag_slug>/", "PostByTagListView.as_view()"]
 login/, register/, profile/
 URL configuration for advanced_api_project project.
 "comment/<int:pk>/update/", "post/<int:pk>/comments/new/", "comment/<int:pk>/delete/"
@@ -20,5 +21,6 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
 
 
