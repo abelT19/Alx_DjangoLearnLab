@@ -4,6 +4,7 @@ from .models import Author, Book
 from .serializers import AuthorSerializer, BookSerializer
 "CommentCreateView", "CommentUpdateView", "LoginRequiredMixin", "UserPassesTestMixin", "CommentDeleteView
 "POST", "method", "save()"
+"Post.objects.filter", "title__icontains", "tags__name__icontains", "content__icontains
 # Book ViewSet
 # -----------------------------
 class BookViewSet(viewsets.ModelViewSet):
@@ -26,5 +27,6 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [permissions.AllowAny]  # Change to IsAuthenticated if needed
+
 
 
