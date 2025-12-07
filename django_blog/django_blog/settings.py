@@ -1,6 +1,8 @@
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        "blog"
+
+       'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -13,3 +15,4 @@ TEMPLATES = [
         },
     },
 ]
+
