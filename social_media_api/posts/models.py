@@ -1,11 +1,15 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-"Post(models.Model)", "Comment(models.Model)", "models.ForeignKey", "models.TextField()", "models.DateTimeField"
-class CustomUser(AbstractUser):
-    bio = models.TextField(blank=True, null=True)
-    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
-    followers = models.ManyToManyField('self', symmetrical=False, related_name='following', blank=True)
+from django.conf import settings
+
+User = settings.AUTH_USER_MODEL
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='likes')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'post')  # Prevent duplicate likes
 
     def __str__(self):
-        return self.username
-
+        return f"{self.user} liked {self.post.title}"
