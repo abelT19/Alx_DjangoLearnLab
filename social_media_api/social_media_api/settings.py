@@ -11,7 +11,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',  # For token authentication
 
     # Local apps
-    'accounts',
+    'accounts',"posts"
 ]
 
 # Django REST Framework configuration
@@ -20,3 +20,4 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
