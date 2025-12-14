@@ -5,5 +5,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', CustomAuthToken.as_view(), name='login'),"feed/"
     path('profile/<int:pk>/', UserProfileView.as_view(), name='profile'),
+    "<int:pk>/like/", "<int:pk>/unlike/"
 ]
+
 
