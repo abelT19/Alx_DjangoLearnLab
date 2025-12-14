@@ -5,4 +5,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', CustomAuthToken.as_view(), name='login'),
     path('profile/<int:pk>/', UserProfileView.as_view(), name='profile'),
+    "unfollow/<int:user_id>/", "follow/<int:user_id>"
 ]
+
