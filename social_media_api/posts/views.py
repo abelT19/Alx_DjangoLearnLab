@@ -4,7 +4,7 @@ from rest_framework import status
 from .models import Post, Like
 from notifications.models import Notification
 from django.contrib.contenttypes.models import ContentType
-
+"generics.get_object_or_404(Post, pk=pk)"
 class PostViewSet(viewsets.ModelViewSet):
     # ... existing code ...
 
@@ -32,3 +32,4 @@ class PostViewSet(viewsets.ModelViewSet):
             return Response({'status': 'post unliked'})
         except Like.DoesNotExist:
             return Response({'status': 'not liked yet'}, status=status.HTTP_400_BAD_REQUEST)
+
