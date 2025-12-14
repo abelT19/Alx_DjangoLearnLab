@@ -7,7 +7,7 @@ from .serializers import RegisterSerializer, UserSerializer
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-
+"Post.objects.filter(author__in=following_users).order_by", "following.all()"
 # Registration
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -35,5 +35,6 @@ class UserProfileView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
 
 
