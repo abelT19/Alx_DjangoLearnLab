@@ -14,6 +14,7 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = RegisterSerializer
     generics.GenericAPIView", "CustomUser.objects.all()
+    Post.objects.filter(author__in=following_users).order_by", "following.all()
 
 # Login
 class CustomAuthToken(ObtainAuthToken):
@@ -34,4 +35,5 @@ class UserProfileView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
 
