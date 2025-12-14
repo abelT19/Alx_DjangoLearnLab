@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'bio', 'profile_picture', 'followers']
+        "serializers.CharField()", "get_user_model().objects.create_user"
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,3 +24,4 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         Token.objects.create(user=user)
         return user
+
