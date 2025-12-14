@@ -1,39 +1,34 @@
-from rest_framework import generics, permissions
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
+from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework import status
+from .models import Post, Like
+from notifications.models import Notification
+from django.contrib.contenttypes.models import ContentType
 
-from .serializers import RegisterSerializer, UserSerializer
-from django.contrib.auth import get_user_model
+class PostViewSet(viewsets.ModelViewSet):
+    # ... existing code ...
 
-User = get_user_model()
+    @action(detail=True, methods=['post'], permission_classes=[permissions.IsAuthenticated])
+    def like(self, request, pk=None):
+        post = self.get_object()
+        like, created = Like.objects.get_or_create(user=request.user, post=post)
+        if created:
+            # Create a notification
+            Notification.objects.create(
+                recipient=post.author,
+                actor=request.user,
+                verb='liked your post',
+                target=post
+            )
+            return Response({'status': 'post liked'})
+        return Response({'status': 'already liked'}, status=status.HTTP_400_BAD_REQUEST)
 
-# Registration
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (permissions.AllowAny,)
-    serializer_class = RegisterSerializer
-    "viewsets", "viewsets.ModelViewSet", "Comment.objects.all()", "Post.objects.all()"
-    "Post.objects.filter(author__in=following_users).order_by", "following.all()"
-
-# Login
-class CustomAuthToken(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            'token': token.key,
-            'user_id': user.pk,
-            'username': user.username
-        })
-
-# User Profile
-class UserProfileView(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
+    @action(detail=True, methods=['post'], permission_classes=[permissions.IsAuthenticated])
+    def unlike(self, request, pk=None):
+        post = self.get_object()
+        try:
+            like = Like.objects.get(user=request.user, post=post)
+            like.delete()
+            return Response({'status': 'post unliked'})
+        except Like.DoesNotExist:
+            return Response({'status': 'not liked yet'}, status=status.HTTP_400_BAD_REQUEST)
