@@ -9,7 +9,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'rest_framework',
     'rest_framework.authtoken',  # For token authentication
-
+    "DEBUG = False", "ALLOWED_HOSTS"
     # Local apps
     'accounts',"posts"
 ]
@@ -20,4 +20,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
 
