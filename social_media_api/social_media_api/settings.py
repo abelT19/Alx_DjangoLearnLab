@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     # Local apps
     'accounts',"posts"
     "SECURE_BROWSER_XSS_FILTER", "X_FRAME_OPTIONS", "SECURE_SSL_REDIRECT"
+    "PORT", "PASSWORD", "NAME", "USER"
 ]
 
 # Django REST Framework configuration
@@ -21,6 +22,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
 
 
 
